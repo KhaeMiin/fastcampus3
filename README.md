@@ -49,3 +49,29 @@
 	</typeAliases>	
 	```
 	※ alias는 대소문자 구분 안함<br>
+	
+# MyBatis로 DAO작성하기
+
+### 1. BoardDao의 작성
+1. DB테이블 생성
+2. MapperXML & DTO작성
+3. DAO인터페이스 작성
+4. DAO인터페이스 구현&테스트
+
+### 2. DTO란? (Data Transfer Object)
+계층간의 데이터를 주고 받기 위해 사용되는 객체
+
+※흐름<br>
+1. 클라이언트 요청 
+2. @Controller (DTO에 요청한 데이터를 담아서 Service로)
+	- 요청과 응답을 처리
+	- 데이터 유효성 검증
+	- 실행 흐름을 제어(Redirect&forward) 
+3. @Service (DTO를 Repository로 전달)
+	- 비지니스 로직 담당
+	- 트랜잭션 처리
+4. @Repository (DTO에 담은 데이터를 DB에 저장)
+	- 순수 Data Access 기능(DAO)
+	- 조회, 등록, 수정, 삭제
+5. 조회: 조회한 데이터를 DTO에 담음
+6. 각 계층(@Repository > @Service > @Controller)을 거쳐서 클라이언트에 응답
